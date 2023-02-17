@@ -1,0 +1,13 @@
+/* Type Breakpoints */
+.tiles {
+    display: grid;
+    grid-gap: 24px;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0%, 50%));
+    list-style: none;
+  }
+  @media screen and (max-width: 960px) {
+    .tiles {
+      grid-template-columns: repeat(1, minmax(0%, 100%));
+    }
+  }

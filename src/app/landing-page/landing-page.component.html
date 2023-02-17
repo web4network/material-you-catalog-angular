@@ -1,0 +1,38 @@
+<div *ngIf="data" class="animation-container" [@fadeIn]="data">
+    <main id="main_content" role="main" aria-label="Main Content" tabindex="-1">
+      <mio-header
+      [config]="data.page_hero"
+      [pageTitle]="data.page_hero.title"
+      [description]="data.page_hero.description"
+      [fullWidth]="data.page_hero.full_width"
+      [fullWidthContentCentered]="data.page_hero.full_width_content_centered">
+      </mio-header>
+      <div class="content-container">
+        <ng-container *ngFor="let section of data.sections">
+          <div class="section">
+            <div class="section-header">
+              <h2>{{section.title}}</h2>
+              <div class="section-header-description"
+                [innerHTML]="section.description"></div>
+            </div>
+            <mio-card-set [ngClass]="{ stack: section.two_column_stacked, 'col-2': section.two_column_stacked }">
+              <mio-card
+                *ngFor="let card of section.cards"
+                [title]="card.title"
+                [description]="card.description"
+                [size]="card.size"
+                [badgeIcon]="card.icon"
+                [badgeShape]="card.background_image?.url ? 'flower' : 'clover'"
+                [backgroundImage]="card.background_image?.url ? card.background_image.url + '=w960' : ''"
+                [thumbnailImage]="card.thumbnail_image?.url ? card.thumbnail_image.url + '=w960' : ''"
+                [link]="card.link.href"
+                [linkAriaLabel]="card.link.aria_label"
+                [openNewWindow]="card.link.open_new_window"
+              ></mio-card>
+            </mio-card-set>
+          </div>
+        </ng-container>
+      </div>
+    </main>
+    <mio-footer></mio-footer>
+  </div>

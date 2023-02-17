@@ -1,0 +1,13 @@
+<mio-figure [caption]="caption" [bordered]="bordered" [case]="case">
+    <video
+      tabindex="0"
+      [preload]="preload"
+      [autoplay]="autoplay"
+      [controls]="controls"
+      [playsInline]="playsInline"
+      [loop]="loop"
+      [muted]="muted"
+      [attr.aria-label]="a11yDescription">
+      <source [src]="safeUrl">
+    </video>
+  </mio-figure>

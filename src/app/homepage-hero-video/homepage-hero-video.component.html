@@ -1,0 +1,37 @@
+<div
+  #heroVideoContainer
+  class="video-container"
+  [ngClass]="{ 'paused': !isPlaying }"
+  (click)="toggleState()"
+  (mouseleave)="hasScrim(false)"
+  (focus)="hasScrim(true)"
+  (blur)="hasScrim(false)"
+  (keydown)="toggleState($event)"
+  tabindex="0"
+  aria-label="video">
+  <video
+    [muted]="muted"
+    [loop]="loop"
+    [autoplay]="autoplay"
+    [playsInline]="playsinline"
+    [poster]="imageUrl"
+    class="lazy"
+    aria-hidden=true
+    tabindex="-1">
+    <source [attr.data-src]="safeVideoUrl">
+  </video>
+  <div class="video-scrim">
+    <div
+      class="button-container"
+      role="button"
+      [attr.aria-label]="(isPlaying ? 'pause ' : 'play ') + 'video'"
+      (keydown)="toggleState($event)"
+      (mouseleave)="hasScrim(false)"
+      (focus)="hasScrim(true)"
+      (blur)="hasScrim(false)"
+      tabindex="0">
+      <div class="mask"></div>
+      <span class="material-icons">{{isPlaying ? 'pause' : 'play_arrow'}}</span>
+    </div>
+  </div>
+</div>

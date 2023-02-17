@@ -1,0 +1,48 @@
+:host {
+    height: 48px;
+    transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+    border: 1px solid var(--mio-theme-color-utility-outline);
+    border-radius: 32px;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    overflow: hidden;
+  }
+  :host.is-dark-mode .track {
+    transform: translateY(-48px);
+  }
+  :host:hover, :host:focus {
+    background-color: rgba(31, 31, 31, 0.08);
+  }
+  :host:active {
+    background-color: rgba(31, 31, 31, 0.12);
+  }
+  :host.is-dark-mode:hover, :host.is-dark-mode:focus {
+    background-color: rgba(227, 227, 227, 0.08);
+  }
+  :host.is-dark-mode:active {
+    background-color: rgba(227, 227, 227, 0.12);
+  }
+  :host[variant=compact],
+  :host[variant=compact] .switch {
+    width: 48px;
+    height: 48px;
+  }
+  :host[variant=full] .switch {
+    padding: 12px 16px;
+  }
+  :host[variant=full] .switch .google-symbols {
+    margin-right: 8px;
+  }
+  .switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1px;
+    margin-left: -1px;
+    color: var(--mio-theme-color-on-surface-variant);
+  }
+  .track {
+    transition: transform 300ms cubic-bezier(0.2, 0, 0, 1);
+  }

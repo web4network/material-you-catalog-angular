@@ -1,0 +1,47 @@
+
+<a [href]="link"
+  mioAnalyticsTracking
+  mioRipple
+  [analyticsKey]="AnalyticsKeys.MIO_M3_TILE"
+  [analyticsLabel]="link"
+  [target]="openNewWindow ? '_blank' : '_self'"
+  [ariaLabel]="linkAriaLabel"
+  [class.scrim]="backgroundImage"
+  [class.thumbnail]="thumbnailHex || thumbnailImage"
+  [class.overline]="overline"
+  [style.background]="backgroundHex"
+  [style.backgroundImage]="backgroundImage && ('url(' + backgroundImage + ')')"
+  (click)="scrollToTop()"
+  (keydown.enter)="setFocus()">
+  <div class="content-container">
+    <span *ngIf="overline" class="overline" [innerHtml]="overline"></span>
+    <span class="title">{{title}}</span>
+    <span *ngIf="description" class="description">{{description}}</span>
+  </div>
+  <div #thumbContainer class="thumb-container"
+    *ngIf="thumbnailHex || thumbnailImage || thumbnailForeground3x1"
+    [style.background]="isDarkMode ? thumbnailDarkModeHex : thumbnailHex"
+    [style.backgroundImage]="thumbnailImage && ('url(' + thumbnailImage + ')')"
+    >
+    <div class="foreground"
+      *ngIf="thumbnailForeground3x1"
+      [style.backgroundImage]="getActiveThumbnailForegroundCss()"
+      [style.backgroundPosition]="thumbnailForegroundAlignment"></div>
+    <div class="hover-image"
+      *ngIf="thumbnailHoverImage"
+      [style.backgroundImage]="isDarkMode ?
+        thumbnailDarkModeHoverImage && ('url(' + thumbnailDarkModeHoverImage + ')'):
+        thumbnailHoverImage && ('url(' + thumbnailHoverImage + ')')">
+    </div>
+  </div>
+  <mio-icon-badge *ngIf="badgeIcon"
+    [symbol]="badgeIcon"
+    [symbolHex]="badgeIconHex"
+    [symbolHoverHex]="badgeIconHoverHex"
+    [shape]="badgeShape"
+    [shapeHex]="badgeShapeHex"
+    [shapeHoverHex]="badgeShapeHoverHex"
+  ></mio-icon-badge>
+</a>
+
+

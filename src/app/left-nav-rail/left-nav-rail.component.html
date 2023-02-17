@@ -1,0 +1,59 @@
+<a #skipLink class="skip-link" [href]="router.url.split('#')[0] + '#main_content'" aria-label="skip to main content"></a>
+
+<nav
+  #navRail
+  aria-label="Main"
+  class="nav-rail-content"
+  (mouseleave)="collapseNavDrawer($event)">
+  <ng-container *ngFor="let section of config.children; let sectionIndex = index">
+    <a
+      *ngIf="!section.isExternal"
+      mioAnalyticsTracking
+      [analyticsKey]="AnalyticsKeys.MIO_NAV_RAIL_ITEM"
+      [analyticsLabel]="section.title"
+      #linkButton="routerLinkActive"
+      [routerLink]="section.disabled ? null : section.slug"
+      routerLinkActive
+      class="section-link"
+      [ngClass]="{'hovered': sectionIndex === hoveredIndex}"
+      [attr.aria-expanded]="section.children.length ? isOpened : undefined"
+      [attr.aria-label]="section.title"
+      [attr.role]="section.disabled || section.children.length ? 'button' : 'link'"
+      ariaControls="navigationDrawer"
+      [attr.aria-current]="(linkButton.isActive && !section.disabled) || (section.disabled && router.isActive(section.slug))"
+      [class.active]="(linkButton.isActive && !section.disabled) || (section.disabled && router.isActive(section.slug))"
+      [routerLinkActiveOptions]="{ exact: section.exactMatch }"
+      [tabindex]="(linkButton.isActive && !section.disabled) || (section.disabled && router.isActive(section.slug)) ? 0 : -1"
+      (mouseenter)="expandNavDrawer(section, $event)"
+      (focus)="expandNavDrawer(section, $event)"
+      (keydown)="onItemKeydownEvent($event, section)"
+      (click)="triggerScrollToTop(section.disabled)">
+      <span class="google-symbols">{{section.symbol}}</span>
+      <div class="label">{{section.title}}</div>
+    </a>
+    <a
+      *ngIf="section.isExternal"
+      mioAnalyticsTracking
+      [analyticsKey]="AnalyticsKeys.MIO_NAV_RAIL_ITEM"
+      [analyticsLabel]="section.title"
+      [href]="section.slug"
+      class="section-link"
+      [ngClass]="{'hovered': sectionIndex === hoveredIndex}"
+      [target]="section.isExternal ? '_blank' : ''"
+      [attr.aria-expanded]="section.children.length ? isOpened : undefined"
+      [attr.aria-label]="section.title"
+      [attr.role]="section.disabled ? 'button' : 'link'"
+      ariaControls="navigationDrawer"
+      tabindex="-1"
+      (mouseenter)="expandNavDrawer(section, $event)"
+      (focus)="expandNavDrawer(section, $event)"
+      (keydown)="onItemKeydownEvent($event, section)"
+      (click)="triggerScrollToTop(section.disabled)">
+      <span class="google-symbols">{{section.symbol}}</span>
+      <div class="label">{{section.title}}</div>
+  </a>
+  </ng-container>
+</nav>
+<div class="dark-mode-switch-container">
+  <mio-dark-mode-switch></mio-dark-mode-switch>
+</div>

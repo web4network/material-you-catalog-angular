@@ -1,0 +1,16 @@
+<figure>
+    <div [class.bordered]="bordered" [class.with-modifier]="case">
+      <ng-content></ng-content>
+    </div>
+    <figcaption *ngIf="caption || case">
+      <span *ngIf="case && case === 'do'" class="caption-label do">
+        <span class="material-icons">check</span> {{captionLabels.DO}}
+      </span>
+      <span *ngIf="case && case === 'dont'" class="caption-label dont">
+        <span class="material-icons">close</span> {{captionLabels.DONT}}
+      </span>
+      <span *ngIf="case && case === 'caution'" class="caption-label caution">
+        <span class="material-icons">exclamation</span> {{captionLabels.CAUTION}}
+      </span>
+      <span class="caption" [innerHTML]="sanitizer.bypassSecurityTrustHtml(caption)"></span></figcaption>
+  </figure>

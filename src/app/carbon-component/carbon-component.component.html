@@ -1,0 +1,58 @@
+<article role="tabpanel" *ngIf="blocks" #contentContainer>
+    <ng-container
+      *ngFor="let block of blocks; index as i"
+      [ngTemplateOutlet]="templateMode(block)"
+      [ngTemplateOutletContext]="{block: block}">
+    </ng-container>
+  </article>
+  
+  <ng-template #standardRow let-block="block">
+    <div *ngIf="!block.isHidden" class="block" [class.snug]="block.isSqueezed" [id]="block.pageContentBlockCanonId" role="region">
+      <div
+        #copyBtn
+        class="copy-button-container"
+        [ngClass]="{'focusable': block.contentChunks[0].contentChunkType === CarbonContentChunkTypes.TEXT && block.contentChunks[0].htmlValue?.startsWith('<h2')}">
+          <div
+            mioRipple
+            [rippleDuration]="rippleDuration"
+            class="google-symbols copy-button"
+            (keydown.enter)="copyShareLink(block.pageContentBlockCanonId, $event)"
+            (click)="copyShareLink(block.pageContentBlockCanonId, $event)">link</div>
+          <div class="copy-button-background"></div>
+          <div class="tooltip">
+            <span class="deactivated">Copy link</span>
+            <span aria-live="polite" class="activated">Link copied</span>
+          </div>
+        </div>
+      <div class="scroll-target"></div>
+      <div *ngFor="let chunk of block.contentChunks" class="chunk" [style.grid-column]="calcGridColumn(chunk.flex)">
+        <ng-container
+          [ngTemplateOutlet]="chunkContent"
+          [ngTemplateOutletContext]="{chunk: chunk}">
+        </ng-container>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #chunkContent let-chunk="chunk">
+    <div *ngIf="chunk.contentChunkType === CarbonContentChunkTypes.TEXT"
+      class="text-chunk"
+      [innerHTML]="chunk.htmlValue"></div>
+    <mio-image *ngIf="chunk.contentChunkType === CarbonContentChunkTypes.IMAGE"
+      [url]="chunk.imageUrlFife ? chunk.imageUrlFife : chunk.imageUrl"
+      [width]="chunk.imageWidth"
+      [height]="chunk.imageHeight"
+      [stretch]="true"
+      [a11yDescription]="chunk.altText"
+      [caption]="chunk.footer"
+      [bordered]="chunk.showBorderAroundMedia"
+      [case]="getMediaModifier(chunk.captionModifier)"></mio-image>
+    <mio-video *ngIf="chunk.contentChunkType === CarbonContentChunkTypes.VIDEO"
+      [url]="chunk.videoUrl"
+      [a11yDescription]="chunk.altText"
+      [caption]="chunk.footer"
+      [bordered]="chunk.showBorderAroundMedia"
+      [autoplay]="chunk.autoplayVideo"
+      [controls]="true"
+      [case]="getMediaModifier(chunk.captionModifier)"></mio-video>
+  </ng-template>

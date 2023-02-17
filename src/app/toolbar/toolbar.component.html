@@ -1,0 +1,22 @@
+<a #skipLink class="skip-link" [href]="router.url.split('#')[0] + '#main_content'" aria-label="skip to main content"></a>
+
+<mwc-top-mio-bar-fixed #mwcTopAppBar>
+  <mwc-icon-button
+    [icon]="isDrawerOpened ? 'menu_open' : 'menu'"
+    slot="navigationIcon"
+    class="menu-button"
+    [attr.aria-label]="isDrawerOpened ? 'close menu' : 'open menu'">
+  </mwc-icon-button>
+  <a
+    mioAnalyticsTracking
+    [analyticsKey]="AnalyticsKeys.MIO_TOOLBAR_M3_HOMEPAGE_LINK"
+    analyticsLabel="/"
+    slot="title"
+    class="home-page-link"
+    routerLink="/"
+    aria-label="go to Material Design 3 homepage"
+    (keydown.enter)="setFocus()">
+    <span class="material-icons md-24">material_design</span>
+    <span *ngIf="!isMobile()">Material Design 3</span>
+  </a>
+</mwc-top-mio-bar-fixed>

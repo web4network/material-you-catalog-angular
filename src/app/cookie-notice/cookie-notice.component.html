@@ -1,0 +1,20 @@
+<div class="cookie-notice">
+    <div class="cookie-notice-message">
+      <p class="cookie-notice-message-content">This site uses cookies from Google to deliver its services and to analyze traffic.
+        <a
+          href="https://policies.google.com/technologies/cookies"
+          target="_blank"
+          aria-label="learn more about how Google uses cookies to deliver its services and to analyze traffic">
+          Learn more</a>
+      </p>
+    </div>
+    <div
+      role="button"
+      tabindex="0"
+      class="cookie-notice-confirm"
+      aria-label="confirm">
+      <mwc-button #mwcButton outlined tabindex="-1" (click)="confirm()"
+        mioAnalyticsTracking
+        [analyticsKey]="AnalyticsKeys.MIO_COOKIE_NOTICE_CONFIRM">Okay, got it</mwc-button>
+    </div>
+  </div>

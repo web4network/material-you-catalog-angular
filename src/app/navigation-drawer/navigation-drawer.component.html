@@ -1,0 +1,128 @@
+<mwc-drawer #mwcDrawer [type]="isModalType ? 'modal' : 'dismissible'">
+    <nav aria-label="navigation drawer" id="navigationDrawer" (keydown)="onItemKeydownEvent($event)">
+      <div class="nav-drawer-section">
+        <ng-container *ngIf="isModalType">
+          <div
+            mioAnalyticsTracking
+            [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_CLOSE_MENU"
+            mioRipple
+            [rippleDuration]="rippleDuration"
+            class="menu"
+            role="button"
+            aria-label="close menu"
+            (click)="toggleState()"
+            (keydown.enter)="toggleState()"
+            tabindex="0">
+            <span class="google-symbols">menu_open</span>
+          </div>
+          <ng-container
+            *ngIf="isTopLevelContent else subsectionContent"
+            [ngTemplateOutletContext]="{config: currentSection}">
+            <div *ngIf="isTopLevelContent" @fadeInOutSectionModal>
+              <ng-container *ngFor="let section of config.children">
+                <ng-container *ngIf="section.children.length">
+                  <div
+                    mioAnalyticsTracking
+                    [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_ITEM"
+                    [analyticsLabel]="section.slug"
+                    class="item"
+                    role="button"
+                    [attr.aria-label]="section.title"
+                    [class.active]="router.isActive(section.slug)"
+                    [tabindex]="router.isActive(section.slug) ? '0' : '-1'"
+                    (click)="topToLowLevelSwitch(section)"
+                    (keydown.enter)="topToLowLevelSwitch(section)">
+                    <span class="section-icon google-symbols">{{section.symbol}}</span>
+                    <div class="label">{{section.title}}</div>
+                    <span class="arrow-right-icon google-symbols">arrow_forward</span>
+                  </div>
+                </ng-container>
+  
+                <ng-container *ngIf="!section.children.length && !section.isExternal">
+                  <a
+                    mioAnalyticsTracking
+                    [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_ITEM"
+                    [analyticsLabel]="section.slug"
+                    #linkButton="routerLinkActive"
+                    class="item"
+                    [attr.aria-label]="section.title"
+                    [routerLink]="section.slug"
+                    routerLinkActive
+                    (click)="closeNavigationDrawer()"
+                    (keydown.enter)="navigateToLandingPage()"
+                    [routerLinkActiveOptions]="{ exact: section.exactMatch }"
+                    [class.active]="(linkButton.isActive && !section.disabled) || (section.disabled && router.isActive(section.slug))"
+                    [tabindex]="(linkButton.isActive && !section.disabled) || (section.disabled && router.isActive(section.slug)) ? 0 : -1">
+                    <span class="section-icon google-symbols">{{section.symbol}}</span>
+                    <div class="label">{{section.title}}</div>
+                  </a>
+                </ng-container>
+  
+                <ng-container *ngIf="!section.children.length && section.isExternal">
+                  <a
+                    mioAnalyticsTracking
+                    [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_ITEM"
+                    [analyticsLabel]="section.slug"
+                    class="item"
+                    [attr.aria-label]="section.title"
+                    [href]="section.slug"
+                    (click)="closeNavigationDrawer()"
+                    tabindex="-1"
+                    target="_blank">
+                    <span class="section-icon google-symbols">{{section.symbol}}</span>
+                    <div class="label">{{section.title}}</div>
+                  </a>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </ng-container>
+  
+        <ng-container *ngIf="!isModalType">
+          <ng-container *ngIf="currentSection">
+            <div *ngFor="let topic of currentSection.children" @fadeInOut>
+              <mio-navigation-drawer-item
+                [config]="topic"
+                [exactMatch]="topic.exactMatch">
+              </mio-navigation-drawer-item>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+  
+      <div class="dark-mode-switch-container" *ngIf="isModalType">
+        <mio-dark-mode-switch variant='full'></mio-dark-mode-switch>
+      </div>
+    </nav>
+  
+    <div slot="appContent" class="page-content" (click)="closeNavigationDrawer()" #pageContentRef>
+      <mio-toolbar *ngIf="isModalType" role="banner"></mio-toolbar>
+      <ng-container *ngTemplateOutlet="pageContent"></ng-container>
+    </div>
+  </mwc-drawer>
+  
+  <ng-template #subsectionContent let-config="currentSection">
+    <div *ngIf="currentSection" @fadeInOutSubsectionModal>
+      <div
+        mioAnalyticsTracking
+        [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_BACK_TO_MENU"
+        #goBack
+        *ngIf="isModalType"
+        class="main-menu"
+        aria-label="back to main menu"
+        role="button"
+        (click)="topToLowLevelSwitch()"
+        (keydown.enter)="topToLowLevelSwitch(section)"
+        (keydown.tab)="handleTab($event)"
+        tabindex="0">
+        <span class="arrow-back-icon google-symbols">arrow_back</span>
+        <div class="label">Main menu</div>
+      </div>
+      <ng-container *ngFor="let topic of currentSection.children">
+        <mio-navigation-drawer-item
+          [config]="topic"
+          [exactMatch]="topic.exactMatch">
+        </mio-navigation-drawer-item>
+      </ng-container>
+    </div>
+  </ng-template>

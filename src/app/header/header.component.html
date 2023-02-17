@@ -1,0 +1,62 @@
+<header [ngClass]="getHeaderClasses()">
+    <div class="primary-container" [ngClass]="getPrimaryContainerClasses()"
+      [style.backgroundImage]="!isSplitAsset() && getBackgroundAssetStyle()">
+      <div class="wrapper">
+        <div class="title">
+          <h1 tabindex="-1">{{pageTitle}}</h1>
+          <div *ngIf="description" class="description">{{description}}</div>
+        </div>
+        <div class="ctas" *ngIf="config?.ctas && config.ctas.length > 0">
+          <div *ngIf="config?.ctas[0]">
+            <a
+              [target]="config?.ctas[0].open_new_window ? '_blank' : '_self'"
+              [attr.aria-label]="config?.ctas[0].aria_label"
+              [href]="config?.ctas[0].href">
+              <button
+                mioRipple
+                class="mio-button"
+                tabindex="-1">
+                  <div class="state-overlay"></div>
+                  <span class="label">{{config?.ctas[0].label}}</span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="resources" *ngIf="config?.resources && config.resources.length > 0 && !fullWidth">
+      <h3>Popular Resources</h3>
+      <mio-card-set class="card-container"
+        [ngClass]="{ stack: stackResourceCards, stretch: stretchResourceCards }">
+        <ng-container *ngFor="let resource of config.resources">
+          <mio-card
+            size="small"
+            [title]="resource.title"
+            [description]="resource.description"
+            [badgeIcon]="resource.icon"
+            [link]="resource.link.href"
+            [linkAriaLabel]="resource.link.aria_label"
+            [openNewWindow]="resource.link.open_new_window"></mio-card>
+        </ng-container>
+      </mio-card-set>
+    </div>
+    <div class="split-asset-image" *ngIf="(!config?.resources || config?.resources.length === 0) && !fullWidth"
+      [style.backgroundImage]="getSplitBackgroundAssetStyle()"
+      [class.position-right]="config?.horizontal_foreground_alignment_override === 'position_right'"
+      [class.position-left]="config?.horizontal_foreground_alignment_override === 'position_left'"
+      [class.position-top]="config?.vertical_foreground_alignment_override === 'position_top'"
+      [class.position-bottom]="config?.vertical_foreground_alignment_override === 'position_bottom'">
+      <div class="foreground foreground-1x1"
+        *ngIf="config?.foreground_image_1x1?.url"
+        [style.backgroundImage]="isDarkMode ?
+          'url(' + config?.foreground_image_1x1_dark_mode?.url + '=w1200)':
+          'url(' + config?.foreground_image_1x1?.url + '=w1200)'">
+      </div>
+      <div class="foreground foreground-2x1"
+        *ngIf="config?.foreground_image_2x1?.url"
+        [style.backgroundImage]="isDarkMode ?
+          'url(' + config?.foreground_image_2x1_dark_mode?.url + '=w2400)':
+          'url(' + config?.foreground_image_2x1?.url + '=w2400)'">
+      </div>
+    </div>
+  </header>

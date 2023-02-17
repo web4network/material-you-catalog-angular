@@ -1,0 +1,143 @@
+/* Type Breakpoints */
+:host {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background: var(--mio-theme-color-surface-2);
+    overflow-y: auto;
+    z-index: 8;
+  }
+  @media screen and (max-width: 960px) {
+    :host {
+      display: none;
+    }
+  }
+  a {
+    display: block;
+    text-decoration: none;
+  }
+  a:hover, a:focus, a:hover:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  .skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-clip-path: polygon(0 0, 0 0, 0 0);
+            clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  .nav-rail-content {
+    display: flex;
+    flex-direction: column;
+    width: 88px;
+    margin-top: 20px;
+  }
+  .section-link {
+    width: 80px;
+    margin: -2px auto 14px;
+    padding: 2px;
+    color: var(--mio-theme-color-on-surface-variant);
+  }
+  .section-link .google-symbols::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    /* stylelint-disable-next-line */
+    /* stylelint-disable-next-line */
+    transform: scaleX(0.32);
+    transition-duration: 200ms;
+    transition-property: transform, opacity;
+    transition-timing-function: linear;
+    border-radius: 100px;
+    background: var(--mio-theme-color-secondary-container);
+    content: "";
+    z-index: -1;
+  }
+  .section-link:focus-visible, .section-link:hover:focus-visible {
+    margin: -4px auto 12px;
+    border: 2px solid var(--mio-theme-color-on-surface);
+    border-radius: 18px;
+    outline: 0;
+    box-shadow: inset 0 0 0 2px var(--mio-theme-color-surface-0);
+  }
+  .section-link:hover, .section-link.hovered {
+    color: var(--mio-theme-color-on-surface);
+  }
+  .section-link:hover .label, .section-link.hovered .label {
+    font-variation-settings: "GRAD" 50;
+  }
+  .section-link:hover .google-symbols, .section-link.hovered .google-symbols {
+    background: var(--mio-theme-color-on-surface-variant-2);
+    font-variation-settings: "wght" 600, "opsz" 24;
+  }
+  .section-link:active {
+    color: var(--mio-theme-color-on-surface);
+  }
+  .section-link:active .label {
+    font-variation-settings: "GRAD" -50;
+  }
+  .section-link:active .google-symbols {
+    background: var(--mio-theme-color-on-surface-variant-4);
+    font-variation-settings: "wght" 300, "opsz" 24;
+  }
+  .section-link.active .label {
+    color: var(--mio-theme-color-on-secondary-container);
+    font-variation-settings: "GRAD" 125;
+  }
+  .section-link.active .google-symbols {
+    color: var(--mio-theme-color-on-secondary-container);
+    font-variation-settings: "FILL" 1, "wght" 400, "opsz" 24;
+  }
+  .section-link.active .google-symbols::before {
+    opacity: 1;
+    /* stylelint-disable-next-line */
+    /* stylelint-disable-next-line */
+    transform: scaleX(1);
+  }
+  .section-link.active:hover .google-symbols {
+    font-variation-settings: "FILL" 1, "wght" 600, "opsz" 24;
+  }
+  .section-link.active:active .label {
+    font-variation-settings: "GRAD" -50;
+  }
+  .section-link.active:active .google-symbols {
+    font-variation-settings: "FILL" 1, "wght" 300, "opsz" 24;
+  }
+  .google-symbols {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 32px;
+    margin-right: auto;
+    margin-bottom: 4px;
+    margin-left: auto;
+    font-variation-settings: "wght" 400, "opsz" 24;
+    transition: font-variation-settings 200ms cubic-bezier(0.2, 0, 0, 1);
+    border-radius: 16px;
+  }
+  .label {
+    font-family: var(--mio-theme-v2-label-m-font-family);
+    font-size: var(--mio-theme-v2-label-m-font-size);
+    font-weight: var(--mio-theme-v2-label-m-font-weight);
+    letter-spacing: var(--mio-theme-v2-label-m-letter-spacing);
+    line-height: var(--mio-theme-v2-label-m-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-label-m-font-variation-GRAD), "opsz" var(--mio-theme-v2-label-m-font-variation-opsz);
+    margin-bottom: 4px;
+    transition: font-variation-settings 200ms cubic-bezier(0.2, 0, 0, 1);
+    font-family: var(--mio-theme-display-font-family);
+    text-align: center;
+  }
+  .dark-mode-switch-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }

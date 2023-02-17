@@ -1,0 +1,22 @@
+<nav *ngIf="isDisplayed" aria-label="page content" @fadeInOut>
+    <h2 class="overline">On this page</h2>
+    <div *ngIf="isLaptop" class="title">{{title}}</div>
+    <div #activeIndicator class="indicator" [ngClass]="{'hide': selectedIndex === undefined || selectedIndex < 0 }"></div>
+    <ul>
+      <ng-container *ngFor="let heading of headings; let i = index">
+        <li
+          #listItem
+          role="link"
+          class="list-item"
+          (click)="doSmoothScroll($event, heading, i)"
+          (keydown.enter)="doSmoothScroll($event, heading, i)"
+          [attr.aria-current]="i === selectedIndex"
+          tabindex="0">
+          <a
+            class="toc-item"
+            [ngClass]="{'toc-item--selected': i === selectedIndex}"
+            [innerHtml]="heading.innerHTML"></a>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>

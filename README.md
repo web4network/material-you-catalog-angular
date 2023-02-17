@@ -25,3 +25,29 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+ng generate module mio
+ng g c footer
+ng g c header                    --standalone
+ng g c guide-page                --standalone
+ng g c homepage-hero-video       --standalone
+ng g c icon-badge                --standalone
+ng g c image                     --standalone
+ng g c landing-page              --standalone
+ng g c left-nav-rail             --standalone
+ng g c navigation-drawer-item    --standalone
+ng g c navigation-drawer         --standalone
+ng g c not-found-page            --standalone
+ng g c theme-builder             --standalone
+ng g c tile-set                  --standalone
+ng g c tile                      --standalone
+ng g c toc                       --standalone
+ng g c toolbar                   --standalone
+ng g c video                     --standalone
+
+ng g -m mio c root
+
+ng g c footer --standalone
+ng g c header --standalone

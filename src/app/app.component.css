@@ -1,0 +1,16 @@
+/* Type Breakpoints */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: var(--mio-theme-color-background);
+  }
+  .content-container {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+  }
+  .navigation {
+    display: flex;
+  }

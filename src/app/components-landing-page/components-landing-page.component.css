@@ -1,0 +1,92 @@
+/* Type Breakpoints */
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 8px 8px 0;
+    color: var(--mio-theme-color-on-background);
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    outline: none;
+  }
+  .content-container {
+    width: 100%;
+    max-width: 1200px;
+  }
+  .category {
+    padding: 24px;
+  }
+  .category h2 {
+    font-family: var(--mio-theme-v2-display-l-font-family);
+    font-size: var(--mio-theme-v2-display-l-font-size);
+    font-weight: var(--mio-theme-v2-display-l-font-weight);
+    letter-spacing: var(--mio-theme-v2-display-l-letter-spacing);
+    line-height: var(--mio-theme-v2-display-l-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-display-l-font-variation-GRAD), "opsz" var(--mio-theme-v2-display-l-font-variation-opsz);
+    margin: 0 0 8px;
+  }
+  @media screen and (max-width: 600px) {
+    .category h2 {
+      font-family: var(--mio-theme-v2-display-s-font-family);
+      font-size: var(--mio-theme-v2-display-s-font-size);
+      font-weight: var(--mio-theme-v2-display-s-font-weight);
+      letter-spacing: var(--mio-theme-v2-display-s-letter-spacing);
+      line-height: var(--mio-theme-v2-display-s-line-height);
+      font-variation-settings: "GRAD" var(--mio-theme-v2-display-s-font-variation-GRAD), "opsz" var(--mio-theme-v2-display-s-font-variation-opsz);
+    }
+  }
+  @media screen and (min-width: 601px) and (max-width: 1294px) {
+    .category h2 {
+      font-family: var(--mio-theme-v2-display-m-font-family);
+      font-size: var(--mio-theme-v2-display-m-font-size);
+      font-weight: var(--mio-theme-v2-display-m-font-weight);
+      letter-spacing: var(--mio-theme-v2-display-m-letter-spacing);
+      line-height: var(--mio-theme-v2-display-m-line-height);
+      font-variation-settings: "GRAD" var(--mio-theme-v2-display-m-font-variation-GRAD), "opsz" var(--mio-theme-v2-display-m-font-variation-opsz);
+    }
+  }
+  .category p {
+    font-family: var(--mio-theme-v2-title-l-font-family);
+    font-size: var(--mio-theme-v2-title-l-font-size);
+    font-weight: var(--mio-theme-v2-title-l-font-weight);
+    letter-spacing: var(--mio-theme-v2-title-l-letter-spacing);
+    line-height: var(--mio-theme-v2-title-l-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-title-l-font-variation-GRAD), "opsz" var(--mio-theme-v2-title-l-font-variation-opsz);
+    max-width: 760px;
+    margin: 0;
+    color: var(--mio-theme-color-on-surface-variant);
+  }
+  @media screen and (max-width: 600px) {
+    .category p {
+      font-family: var(--mio-theme-v2-body-l-font-family);
+      font-size: var(--mio-theme-v2-body-l-font-size);
+      font-weight: var(--mio-theme-v2-body-l-font-weight);
+      letter-spacing: var(--mio-theme-v2-body-l-letter-spacing);
+      line-height: var(--mio-theme-v2-body-l-line-height);
+      font-variation-settings: "GRAD" var(--mio-theme-v2-body-l-font-variation-GRAD), "opsz" var(--mio-theme-v2-body-l-font-variation-opsz);
+    }
+  }
+  mio-header {
+    width: 100%;
+    max-width: 1760px;
+    margin-bottom: 56px;
+  }
+  @media screen and (max-width: 960px) {
+    mio-header {
+      margin-bottom: 40px;
+    }
+  }
+  mio-card-set {
+    margin-bottom: 80px;
+    padding-top: 8px;
+  }
+  @media screen and (max-width: 960px) {
+    mio-card-set {
+      margin-bottom: 64px;
+    }
+  }

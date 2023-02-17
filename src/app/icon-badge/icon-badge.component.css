@@ -1,0 +1,114 @@
+
+/* Type Breakpoints */
+@-webkit-keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  :host {
+    --symbol-size: 32px;
+    --badge-bg-color: var(--mio-theme-color-surface-0);
+    --badge-bg-color-hover: var(--mio-theme-color-secondary);
+    --symbol-color: var(--mio-theme-color-on-secondary-container);
+    --symbol-color-hover: var(--mio-theme-color-on-secondary);
+    display: grid;
+    align-items: center;
+    transform-origin: 50%;
+    transition: transform cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    color: var(--symbol-color);
+    font-weight: 500;
+    justify-items: center;
+  }
+  :host .google-symbols {
+    transition: font-variation-settings cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    font-variation-settings: "wght" 500;
+  }
+  :host-context(a:focus) {
+    color: var(--symbol-color-hover);
+  }
+  :host-context(a:focus) .mask svg path {
+    fill: var(--badge-bg-color-hover);
+  }
+  :host-context(a:hover) {
+    color: var(--symbol-color-hover);
+  }
+  :host-context(a:hover) .mask svg path {
+    fill: var(--badge-bg-color-hover);
+  }
+  :host-context(a:hover) .google-symbols {
+    font-variation-settings: "wght" 700;
+  }
+  :host-context(a:hover) .symbol svg path {
+    fill: var(--symbol-color-hover);
+  }
+  :host-context(a:active) .mask svg path {
+    fill: var(--badge-bg-color-hover);
+  }
+  :host-context(a:active) .google-symbols {
+    font-variation-settings: "wght" 300;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :host-context(a:hover).spin .clover {
+      transform: rotate(90deg);
+    }
+    :host-context(a:hover).spin .flower {
+      -webkit-animation-play-state: running;
+              animation-play-state: running;
+    }
+  }
+  .mask,
+  .symbol {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .mask {
+    width: inherit;
+    height: inherit;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .mask svg {
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+  }
+  .mask svg path {
+    transition: fill 300ms cubic-bezier(0.2, 0, 0, 1);
+    fill: var(--badge-bg-color);
+  }
+  .mask .flower {
+    -webkit-animation: spin 12s linear;
+            animation: spin 12s linear;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+  .symbol {
+    width: var(--symbol-size);
+    height: var(--symbol-size);
+    z-index: 1;
+  }
+  .symbol svg path {
+    fill: var(--symbol-color);
+  }
+  .symbol div {
+    width: inherit;
+    height: inherit;
+    background-size: contain;
+  }
+  .symbol .glitch {
+    background-image: url('/static/angular/glitch.4a112f1bdf1606cced45.svg');
+  }
+  .symbol .google-symbols {
+    font-size: var(--symbol-size);
+  }

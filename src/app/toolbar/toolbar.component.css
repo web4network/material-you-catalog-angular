@@ -1,0 +1,77 @@
+/* Type Breakpoints */
+:host {
+    z-index: 4;
+  }
+  .skip-link {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-clip-path: polygon(0 0, 0 0, 0 0);
+            clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  mwc-top-mio-bar-fixed {
+    --mdc-theme-primary: var(--mio-theme-color-surface-0);
+    --mdc-theme-on-primary: var(--mio-theme-color-on-surface);
+    --mdc-top-mio-bar-fixed-box-shadow: 0;
+  }
+  .menu-button {
+    --mdc-icon-size: 24px;
+    --mdc-ripple-color: transparent;
+    border-radius: 26px;
+  }
+  .menu-button:focus-within {
+    margin-right: -2px;
+    margin-left: -2px;
+    border: 2px solid var(--mio-theme-color-on-surface);
+    outline: 0;
+    color: var(--mio-theme-color-on-surface);
+    box-shadow: inset 0 0 0 2px var(--mio-theme-color-surface-0);
+  }
+  .menu-button:hover {
+    background: var(--mio-theme-color-on-surface-variant-2);
+  }
+  .menu-button:active {
+    background: var(--mio-theme-color-on-surface-variant-4);
+  }
+  .home-page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    margin-left: -16px;
+    padding-right: 11px;
+    padding-left: 8px;
+    border-radius: 20px;
+    color: var(--mio-theme-color-on-surface);
+    font-family: var(--mio-theme-display-font-family);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-decoration: none;
+  }
+  @media screen and (max-width: 600px) {
+    .home-page-link {
+      padding-right: 8px;
+    }
+  }
+  .home-page-link :nth-child(2) {
+    margin-left: 16px;
+  }
+  .home-page-link .material-icons {
+    font-size: 22px;
+  }
+  .home-page-link:focus {
+    margin: 0 0 0 -18px;
+    border: 2px solid var(--mio-theme-color-on-surface);
+    outline: 0;
+    color: var(--mio-theme-color-on-surface);
+    box-shadow: inset 0 0 0 2px var(--mio-theme-color-surface-0);
+  }
+  .home-page-link:hover {
+    background: var(--mio-theme-color-on-surface-variant-2);
+  }
+  .home-page-link:active {
+    background: var(--mio-theme-color-on-surface-variant-4);
+  }

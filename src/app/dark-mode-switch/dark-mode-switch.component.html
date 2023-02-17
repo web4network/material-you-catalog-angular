@@ -1,0 +1,18 @@
+<ng-container *ngIf="variant === 'compact'">
+    <div class="track" [ngClass]="{'is-dark-mode': isDarkMode }">
+        <div class="dark-mode switch">
+            <span class="google-symbols" aria-hidden="true">dark_mode</span>
+        </div>
+        <div class="light-mode switch">
+            <span class="google-symbols" aria-hidden="true">light_mode</span>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="variant === 'full'">
+    <div class="dark-mode switch" *ngIf="!isDarkMode">
+        <span class="google-symbols" aria-hidden="true">dark_mode</span> Switch to dark mode
+    </div>
+    <div class="light-mode switch" *ngIf="isDarkMode">
+        <span class="google-symbols" aria-hidden="true">light_mode</span> Switch to light mode
+    </div>
+</ng-container>

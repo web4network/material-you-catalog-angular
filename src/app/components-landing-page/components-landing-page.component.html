@@ -1,0 +1,46 @@
+
+<div *ngIf="config" class="animation-container" [@fadeIn]="config">
+    <main id="main_content" role="main" aria-label="Main Content" tabindex="-1">
+      <mio-header
+      [config]="config.header"
+      [pageTitle]="config.header.title"
+      [description]="config.header.description"
+      [fullWidth]="true"
+      ></mio-header>
+      <div class="content-container">
+        <ng-container *ngFor="let category of categoryMap | keyvalue">
+          <div class="category">
+            <h2>{{categoryMap[category.key].title}}</h2>
+            <p>{{categoryMap[category.key].description}}</p>
+          </div>
+          <mio-card-set>
+            <ng-container *ngFor="let card of category.value.cards">
+              <mio-card *ngIf="card.isDisplayed"
+                size="small"
+                [thumbnailHex]="category.value.theme.thumbnailHex"
+                [thumbnailHoverImage]="category.value.theme.thumbnailHoverImage"
+                [thumbnailForeground1x1]="card.image_1x1?.url"
+                [thumbnailForeground2x1]="card.image_2x1?.url"
+                [thumbnailForeground3x1]="card.image_3x1?.url"
+                [thumbnailForeground3x2]="card.image_3x2?.url"
+                [thumbnailForegroundAlignment]="card.image_position"
+                [thumbnailDarkModeHex]="category.value.theme.thumbnailHexDarkMode"
+                [thumbnailDarkModeHoverImage]="category.value.theme.thumbnailHoverImageDarkMode"
+                [thumbnailDarkModeForeground1x1]="card.dark_image_1x1?.url"
+                [thumbnailDarkModeForeground2x1]="card.dark_image_2x1?.url"
+                [thumbnailDarkModeForeground3x1]="card.dark_image_3x1?.url"
+                [thumbnailDarkModeForeground3x2]="card.dark_image_3x2?.url"
+                [title]="card.title"
+                [description]="card.description"
+                [link]="card.link"
+                [linkAriaLabel]="card.title +' component'"
+                [theme]="category.value.theme.id"
+                [ngClass]="{ 'hidden': !card.isDisplayed }"
+              ></mio-card>
+            </ng-container>
+          </mio-card-set>
+        </ng-container>
+      </div>
+    </main>
+    <mio-footer></mio-footer>
+  </div>

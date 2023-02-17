@@ -1,0 +1,13 @@
+/* Type Breakpoints */
+:host {
+    display: block;
+    overflow: hidden;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  .full-width img {
+    width: 100%;
+  }

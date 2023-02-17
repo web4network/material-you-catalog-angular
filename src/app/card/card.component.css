@@ -1,0 +1,612 @@
+
+/* Type Breakpoints */
+:host-context(mio-card-set.stack),
+:host-context(mio-card-set.stretch) {
+  grid-column: span 1;
+}
+:host-context(mio-card-set.stack) a,
+:host-context(mio-card-set.stretch) a {
+  flex-direction: initial;
+}
+:host-context(mio-card-set.stack) a.thumbnail,
+:host-context(mio-card-set.stretch) a.thumbnail {
+  justify-content: space-between;
+}
+:host-context(mio-card-set.stack) .content-container,
+:host-context(mio-card-set.stack) .description,
+:host-context(mio-card-set.stretch) .content-container,
+:host-context(mio-card-set.stretch) .description {
+  align-self: end;
+  overflow: hidden;
+}
+:host-context(mio-card-set.stack) .thumb-container,
+:host-context(mio-card-set.stretch) .thumb-container {
+  width: 200px;
+}
+:host-context(mio-card-set.stack) .thumb-container + mio-icon-badge,
+:host-context(mio-card-set.stretch) .thumb-container + mio-icon-badge {
+  right: 200px;
+}
+/* stylelint-disable selector-max-specificity */
+:host[badgeicon] :host-context(mio-card-set.stack) mio-icon-badge,
+:host[badgeicon] :host-context(mio-card-set.col-2) mio-icon-badge,
+:host[badgeicon] :host-context(mio-card-set.stretch) mio-icon-badge {
+  --symbol-size: 24px;
+  width: 40px;
+  height: 40px;
+}
+:host[badgeicon] :host-context(mio-card-set.stack) .title,
+:host[badgeicon] :host-context(mio-card-set.col-2) .title,
+:host[badgeicon] :host-context(mio-card-set.stretch) .title {
+  margin-right: 56px;
+}
+@media screen and (max-width: 600px) {
+  :host[badgeicon] :host-context(mio-card-set.stack) .title,
+:host[badgeicon] :host-context(mio-card-set.col-2) .title,
+:host[badgeicon] :host-context(mio-card-set.stretch) .title {
+    font-family: var(--mio-theme-v2-headline-s-font-family);
+    font-size: var(--mio-theme-v2-headline-s-font-size);
+    font-weight: var(--mio-theme-v2-headline-s-font-weight);
+    letter-spacing: var(--mio-theme-v2-headline-s-letter-spacing);
+    line-height: var(--mio-theme-v2-headline-s-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-headline-s-font-variation-GRAD), "opsz" var(--mio-theme-v2-headline-s-font-variation-opsz);
+  }
+}
+/* stylelint-enable selector-max-specificity */
+:host[size=small] a,
+:host[size=medium] a,
+:host[size=large] a {
+  flex-direction: column-reverse;
+}
+:host[size=small] a.thumbnail, :host[size=small] a.overline,
+:host[size=medium] a.thumbnail,
+:host[size=medium] a.overline,
+:host[size=large] a.thumbnail,
+:host[size=large] a.overline {
+  justify-content: start;
+}
+:host[size=small] .thumb-container,
+:host[size=medium] .thumb-container,
+:host[size=large] .thumb-container {
+  width: 100%;
+}
+:host[size=small] {
+  grid-column: span 2;
+}
+:host[size=small] mio-icon-badge {
+  --symbol-size: 32px;
+  width: 56px;
+  height: 56px;
+}
+:host[size=medium] {
+  grid-column: span 3;
+}
+:host[size=medium] mio-icon-badge {
+  --symbol-size: 32px;
+  width: 64px;
+  height: 64px;
+}
+:host[size=medium] .thumb-container {
+  height: 298px;
+}
+:host[size=large] {
+  grid-column: span 4;
+}
+:host[size=large] mio-icon-badge {
+  --symbol-size: 40px;
+  width: 72px;
+  height: 72px;
+}
+:host[size=large] .thumb-container {
+  height: 398px;
+}
+:host {
+  vertical-align: middle;
+  grid-column: span 6;
+}
+@media screen and (max-width: 1294px) {
+  :host {
+    grid-column: span 2;
+  }
+  :host[size=xsmall] {
+    grid-column: span 1;
+  }
+  :host[size=small] {
+    grid-column: span 1;
+  }
+  :host[size=small] .thumb-container {
+    height: 200px;
+  }
+  :host[size=medium] {
+    grid-column: span 1;
+  }
+  :host[size=medium] .thumb-container {
+    height: 298px;
+  }
+  :host[size=large] {
+    grid-column: span 2;
+  }
+  :host[size=large] .thumb-container {
+    height: 298px;
+  }
+}
+@media screen and (max-width: 600px) {
+  :host {
+    grid-column: span 1;
+  }
+  :host[size=small], :host[size=medium], :host[size=large] {
+    grid-column: span 1;
+  }
+  :host[size=small] .thumb-container, :host[size=medium] .thumb-container, :host[size=large] .thumb-container {
+    height: 200px;
+  }
+}
+:host.green a:hover, :host.green a:focus, :host.green a:active {
+  --mio-theme-color-on-surface-variant-2: linear-gradient(0deg, rgba(67, 73, 62, 0.08), rgba(67, 73, 62, 0.08));
+  --mio-theme-color-on-surface-variant-4: linear-gradient(0deg, rgba(67, 73, 62, 0.12), rgba(67, 73, 62, 0.12));
+  --mio-theme-color-on-surface-2: linear-gradient(0deg, rgba(26, 28, 24, 0.08), rgba(26, 28, 24, 0.08)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-on-surface-4: linear-gradient(0deg, rgba(26, 28, 24, 0.12), rgba(26, 28, 24, 0.12)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-white: #fff;
+  --mio-theme-color-on-background: #1a1c18;
+  --mio-theme-color-background: #fdfdf6;
+  --mio-theme-color-on-surface: #1a1c18;
+  --mio-theme-color-on-surface-variant: #43493e;
+  --mio-theme-color-surface-0: #fdfdf6;
+  --mio-theme-color-surface-variant: #dfe4d6;
+  --mio-theme-color-inverse-surface: #2f312c;
+  --mio-theme-color-inverse-on-surface: #f1f1ea;
+  --mio-theme-color-primary: #386a20;
+  --mio-theme-color-primary-80: #9cd67d;
+  --mio-theme-color-primary-30: #205107;
+  --mio-theme-color-primary-20: #0c3900;
+  --mio-theme-color-on-primary: #fff;
+  --mio-theme-color-primary-container: #b8f397;
+  --mio-theme-color-on-primary-container: #042100;
+  --mio-theme-color-secondary: #55624c;
+  --mio-theme-color-on-secondary: #fff;
+  --mio-theme-color-secondary-container: #d9e7cb;
+  --mio-theme-color-on-secondary-container: #131f0d;
+  --mio-theme-color-tertiary-container: #bbebeb;
+  --mio-theme-color-on-tertiary-container: #002021;
+  --mio-theme-color-utility-error: #ba1b1b;
+  --mio-theme-color-utility-on-error: #fff;
+  --mio-theme-color-utility-outline: #74796e;
+  --mio-theme-color-surface-1: #f0f3e8;
+  --mio-theme-color-surface-2: #ebefe2;
+  --mio-theme-color-surface-3: #e5eadc;
+  --mio-theme-color-surface-4: #e3e9da;
+  --mio-theme-color-surface-5: #dfe6d5;
+  --mio-theme-color-ref-secondary-200: #bdcbb0;
+  --mio-theme-color-ref-secondary-300: #a1b095;
+  --mio-theme-color-ref-neutral-100: #e3e3e3;
+  --mio-theme-color-ref-neutral-200: #c7c7c7;
+}
+:host.red a:hover, :host.red a:focus, :host.red a:active {
+  --mio-theme-color-on-surface-variant-2: linear-gradient(0deg, rgba(83, 67, 67, 0.08), rgba(83, 67, 67, 0.08));
+  --mio-theme-color-on-surface-variant-4: linear-gradient(0deg, rgba(83, 67, 67, 0.12), rgba(83, 67, 67, 0.12));
+  --mio-theme-color-on-surface-2: linear-gradient(0deg, rgba(33, 26, 26, 0.08), rgba(33, 26, 26, 0.08)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-on-surface-4: linear-gradient(0deg, rgba(33, 26, 26, 0.12), rgba(33, 26, 26, 0.12)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-white: #fff;
+  --mio-theme-color-on-background: #211a1a;
+  --mio-theme-color-background: #fcfcfc;
+  --mio-theme-color-on-surface: #211a1a;
+  --mio-theme-color-on-surface-variant: #534343;
+  --mio-theme-color-surface-0: #fcfcfc;
+  --mio-theme-color-surface-variant: #f4dedd;
+  --mio-theme-color-inverse-surface: #362f2f;
+  --mio-theme-color-inverse-on-surface: #fbeeed;
+  --mio-theme-color-primary: #9c4146;
+  --mio-theme-color-primary-80: #ffb3b5;
+  --mio-theme-color-primary-30: #7d2a30;
+  --mio-theme-color-primary-20: #5f121b;
+  --mio-theme-color-on-primary: #fff;
+  --mio-theme-color-primary-container: #ffdadb;
+  --mio-theme-color-on-primary-container: #400008;
+  --mio-theme-color-secondary: #765656;
+  --mio-theme-color-on-secondary: #fff;
+  --mio-theme-color-secondary-container: #ffdad9;
+  --mio-theme-color-on-secondary-container: #2d1516;
+  --mio-theme-color-tertiary-container: #fda;
+  --mio-theme-color-on-tertiary-container: #281800;
+  --mio-theme-color-utility-error: #ba1b1b;
+  --mio-theme-color-utility-on-error: #fff;
+  --mio-theme-color-utility-outline: #857373;
+  --mio-theme-color-surface-1: #f5f0f0;
+  --mio-theme-color-surface-2: #f3eaeb;
+  --mio-theme-color-surface-3: #f0e5e5;
+  --mio-theme-color-surface-4: #efe3e4;
+  --mio-theme-color-surface-5: #eddfe0;
+  --mio-theme-color-ref-secondary-200: #e6bcbc;
+  --mio-theme-color-ref-secondary-300: #c9a1a1;
+  --mio-theme-color-ref-neutral-100: #e3e3e3;
+  --mio-theme-color-ref-neutral-200: #c7c7c7;
+}
+:host.yellow a:hover, :host.yellow a:focus, :host.yellow a:active {
+  --mio-theme-color-on-surface-variant-2: linear-gradient(0deg, rgba(72, 71, 58, 0.08), rgba(72, 71, 58, 0.08));
+  --mio-theme-color-on-surface-variant-4: linear-gradient(0deg, rgba(72, 71, 58, 0.12), rgba(72, 71, 58, 0.12));
+  --mio-theme-color-on-surface-2: linear-gradient(0deg, rgba(28, 28, 22, 0.08), rgba(28, 28, 22, 0.08)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-on-surface-4: linear-gradient(0deg, rgba(28, 28, 22, 0.12), rgba(28, 28, 22, 0.12)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-white: #fff;
+  --mio-theme-color-on-background: #1c1c16;
+  --mio-theme-color-background: #fffcf3;
+  --mio-theme-color-on-surface: #1c1c16;
+  --mio-theme-color-on-surface-variant: #48473a;
+  --mio-theme-color-surface-0: #fffcf3;
+  --mio-theme-color-surface-variant: #e6e3d1;
+  --mio-theme-color-inverse-surface: #31302b;
+  --mio-theme-color-inverse-on-surface: #f4f0e8;
+  --mio-theme-color-primary: #616200;
+  --mio-theme-color-primary-80: #cbcc58;
+  --mio-theme-color-primary-30: #494a00;
+  --mio-theme-color-primary-20: #323200;
+  --mio-theme-color-on-primary: #fff;
+  --mio-theme-color-primary-container: #e8e971;
+  --mio-theme-color-on-primary-container: #1d1d00;
+  --mio-theme-color-secondary: #606042;
+  --mio-theme-color-on-secondary: #fff;
+  --mio-theme-color-secondary-container: #e6e4bf;
+  --mio-theme-color-on-secondary-container: #1c1d06;
+  --mio-theme-color-tertiary-container: #bfedd9;
+  --mio-theme-color-on-tertiary-container: #002117;
+  --mio-theme-color-utility-error: #ba1b1b;
+  --mio-theme-color-utility-on-error: #fff;
+  --mio-theme-color-utility-outline: #797869;
+  --mio-theme-color-surface-1: #f4f1e4;
+  --mio-theme-color-surface-2: #f0eddd;
+  --mio-theme-color-surface-3: #ebe8d6;
+  --mio-theme-color-surface-4: #e9e7d3;
+  --mio-theme-color-surface-5: #e6e4ce;
+  --mio-theme-color-ref-secondary-200: #cac8a5;
+  --mio-theme-color-ref-secondary-300: #aead8a;
+  --mio-theme-color-ref-neutral-100: #e3e3e3;
+  --mio-theme-color-ref-neutral-200: #c7c7c7;
+}
+:host.dark-mode.green a:hover, :host.dark-mode.green a:focus, :host.dark-mode.green a:active {
+  --mio-theme-color-on-surface-variant-2: linear-gradient(0deg, rgba(196, 200, 187, 0.08), rgba(196, 200, 187, 0.08));
+  --mio-theme-color-on-surface-variant-4: linear-gradient(0deg, rgba(196, 200, 187, 0.12), rgba(196, 200, 187, 0.12));
+  --mio-theme-color-on-surface-2: linear-gradient(0deg, rgba(227, 227, 220, 0.08), rgba(227, 227, 220, 0.08)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-on-surface-4: linear-gradient(0deg, rgba(227, 227, 220, 0.12), rgba(227, 227, 220, 0.12)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-white: #fff;
+  --mio-theme-color-on-background: #e3e3dc;
+  --mio-theme-color-background: #1a1c18;
+  --mio-theme-color-on-surface: #e3e3dc;
+  --mio-theme-color-on-surface-variant: #c4c8bb;
+  --mio-theme-color-surface-0: #1a1c18;
+  --mio-theme-color-surface-variant: #43493e;
+  --mio-theme-color-surface-1: #232820;
+  --mio-theme-color-surface-2: #272e23;
+  --mio-theme-color-surface-3: #2b3326;
+  --mio-theme-color-surface-4: #2c3527;
+  --mio-theme-color-surface-5: #2f3929;
+  --mio-theme-color-inverse-surface: #2f312c;
+  --mio-theme-color-inverse-on-surface: #f1f1ea;
+  --mio-theme-color-primary: #9cd67d;
+  --mio-theme-color-primary-80: #9cd67d;
+  --mio-theme-color-primary-30: #205107;
+  --mio-theme-color-primary-20: #0c3900;
+  --mio-theme-color-neutral-10: #1a1c18;
+  --mio-theme-color-neutral-90: #e3e3dc;
+  --mio-theme-color-on-primary: #0c3900;
+  --mio-theme-color-primary-container: #205107;
+  --mio-theme-color-on-primary-container: #b8f397;
+  --mio-theme-color-secondary: #bdcbb0;
+  --mio-theme-color-on-secondary: #273420;
+  --mio-theme-color-secondary-container: #3e4a36;
+  --mio-theme-color-on-secondary-container: #d9e7cb;
+  --mio-theme-color-tertiary-container: #1e4e4e;
+  --mio-theme-color-on-tertiary-container: #bbebeb;
+  --mio-theme-color-utility-error: #ffb4a9;
+  --mio-theme-color-utility-on-error: #680003;
+  --mio-theme-color-utility-outline: #8d9286;
+}
+:host.dark-mode.red a:hover, :host.dark-mode.red a:focus, :host.dark-mode.red a:active {
+  --mio-theme-color-on-surface-variant-2: linear-gradient(0deg, rgba(215, 194, 193, 0.08), rgba(215, 194, 193, 0.08));
+  --mio-theme-color-on-surface-variant-4: linear-gradient(0deg, rgba(215, 194, 193, 0.12), rgba(215, 194, 193, 0.12));
+  --mio-theme-color-on-surface-2: linear-gradient(0deg, rgba(237, 224, 223, 0.08), rgba(237, 224, 223, 0.08)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-on-surface-4: linear-gradient(0deg, rgba(237, 224, 223, 0.12), rgba(237, 224, 223, 0.12)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-white: #fff;
+  --mio-theme-color-on-background: #ede0df;
+  --mio-theme-color-background: #211a1a;
+  --mio-theme-color-on-surface: #ede0df;
+  --mio-theme-color-on-surface-variant: #d7c2c1;
+  --mio-theme-color-surface-0: #211a1a;
+  --mio-theme-color-surface-variant: #534343;
+  --mio-theme-color-surface-1: #2f2525;
+  --mio-theme-color-surface-2: #362929;
+  --mio-theme-color-surface-3: #3c2e2e;
+  --mio-theme-color-surface-4: #3e2f2f;
+  --mio-theme-color-surface-5: #433232;
+  --mio-theme-color-inverse-surface: #362f2f;
+  --mio-theme-color-inverse-on-surface: #fbeeed;
+  --mio-theme-color-primary: #ffb3b5;
+  --mio-theme-color-primary-80: #ffb3b5;
+  --mio-theme-color-primary-30: #7d2a30;
+  --mio-theme-color-primary-20: #5f121b;
+  --mio-theme-color-neutral-10: #211a1a;
+  --mio-theme-color-neutral-90: #ede0df;
+  --mio-theme-color-on-primary: #5f121b;
+  --mio-theme-color-primary-container: #7d2a30;
+  --mio-theme-color-on-primary-container: #ffdadb;
+  --mio-theme-color-secondary: #e6bcbc;
+  --mio-theme-color-on-secondary: #442929;
+  --mio-theme-color-secondary-container: #5c3f3f;
+  --mio-theme-color-on-secondary-container: #ffdad9;
+  --mio-theme-color-tertiary-container: #5b4219;
+  --mio-theme-color-on-tertiary-container: #fda;
+  --mio-theme-color-utility-error: #ffb4a9;
+  --mio-theme-color-utility-on-error: #680003;
+  --mio-theme-color-utility-outline: #a08c8c;
+}
+:host.dark-mode.yellow a:hover, :host.dark-mode.yellow a:focus, :host.dark-mode.yellow a:active {
+  --mio-theme-color-on-surface-variant-2: linear-gradient(0deg, rgba(201, 199, 182, 0.08), rgba(201, 199, 182, 0.08));
+  --mio-theme-color-on-surface-variant-4: linear-gradient(0deg, rgba(201, 199, 182, 0.12), rgba(201, 199, 182, 0.12));
+  --mio-theme-color-on-surface-2: linear-gradient(0deg, rgba(229, 226, 217, 0.08), rgba(229, 226, 217, 0.08)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-on-surface-4: linear-gradient(0deg, rgba(229, 226, 217, 0.12), rgba(229, 226, 217, 0.12)), var(--mio-theme-color-secondary-container);
+  --mio-theme-color-white: #fff;
+  --mio-theme-color-on-background: #e5e2d9;
+  --mio-theme-color-background: #1c1c16;
+  --mio-theme-color-on-surface: #e5e2d9;
+  --mio-theme-color-on-surface-variant: #c9c7b6;
+  --mio-theme-color-surface-0: #1c1c16;
+  --mio-theme-color-surface-variant: #48473a;
+  --mio-theme-color-surface-1: #28281c;
+  --mio-theme-color-surface-2: #2d2d1e;
+  --mio-theme-color-surface-3: #323220;
+  --mio-theme-color-surface-4: #343421;
+  --mio-theme-color-surface-5: #373722;
+  --mio-theme-color-inverse-surface: #31302b;
+  --mio-theme-color-inverse-on-surface: #f4f0e8;
+  --mio-theme-color-primary: #cbcc58;
+  --mio-theme-color-primary-80: #cbcc58;
+  --mio-theme-color-primary-30: #494a00;
+  --mio-theme-color-primary-20: #323200;
+  --mio-theme-color-neutral-10: #1c1c16;
+  --mio-theme-color-neutral-90: #e5e2d9;
+  --mio-theme-color-on-primary: #323200;
+  --mio-theme-color-primary-container: #494a00;
+  --mio-theme-color-on-primary-container: #e8e971;
+  --mio-theme-color-secondary: #cac8a5;
+  --mio-theme-color-on-secondary: #323219;
+  --mio-theme-color-secondary-container: #48482d;
+  --mio-theme-color-on-secondary-container: #e6e4bf;
+  --mio-theme-color-tertiary-container: #254e40;
+  --mio-theme-color-on-tertiary-container: #bfedd9;
+  --mio-theme-color-utility-error: #ffb4a9;
+  --mio-theme-color-utility-on-error: #680003;
+  --mio-theme-color-utility-outline: #939182;
+}
+a {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  transition: border-radius 300ms cubic-bezier(0.2, 0, 0, 1), background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+  border-radius: 24px;
+  background: var(--mio-theme-color-surface-1);
+  color: var(--mio-theme-color-on-surface);
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  font-variation-settings: "GRAD" 0;
+}
+a:hover {
+  color: var(--mio-theme-color-on-secondary-container);
+}
+a:hover .title {
+  font-variation-settings: "GRAD" 50;
+}
+a:hover .overline {
+  color: var(--mio-theme-color-on-secondary-container);
+}
+a:focus {
+  margin: initial;
+  border: initial;
+  border-radius: 48px;
+  outline: 2px solid var(--mio-theme-color-on-surface);
+  color: var(--mio-theme-color-on-secondary-container);
+  box-shadow: initial;
+}
+a:focus .overline {
+  color: var(--mio-theme-color-on-secondary-container);
+}
+a:active {
+  border-radius: 48px;
+  outline: initial;
+  color: var(--mio-theme-color-on-secondary-container);
+}
+a:active .title {
+  font-variation-settings: "GRAD" -50;
+}
+a:active .overline {
+  color: var(--mio-theme-color-on-secondary-container);
+}
+a:hover, a:focus, a:active {
+  background: var(--mio-theme-color-secondary-container);
+}
+a:hover .hover-image, a:focus .hover-image, a:active .hover-image {
+  opacity: 1;
+}
+a:hover .overline, a:focus .overline, a:active .overline {
+  color: var(--mio-theme-color-on-secondary-container);
+}
+a, a:hover, a:focus, a:active {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.scrim .overline,
+.scrim .title,
+.scrim .description {
+  color: var(--mio-theme-color-on-secondary);
+}
+.scrim::before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--mio-theme-color-on-surface);
+  opacity: 0.8;
+  content: "";
+}
+.scrim:hover::before {
+  background-color: var(--mio-theme-color-on-secondary-container);
+  opacity: 0.8;
+}
+.scrim:focus::before {
+  background-color: var(--mio-theme-color-on-secondary-container);
+  opacity: 0.88;
+}
+.scrim:active::before {
+  background-color: var(--mio-theme-color-on-secondary-container);
+  opacity: 0.88;
+}
+.content-container {
+  display: grid;
+  position: relative;
+  align-self: start;
+  margin: 24px;
+  gap: 8px;
+}
+.overline {
+  font-family: var(--mio-theme-v2-title-m-font-family);
+  font-size: var(--mio-theme-v2-title-m-font-size);
+  font-weight: var(--mio-theme-v2-title-m-font-weight);
+  letter-spacing: var(--mio-theme-v2-title-m-letter-spacing);
+  line-height: var(--mio-theme-v2-title-m-line-height);
+  font-variation-settings: "GRAD" var(--mio-theme-v2-title-m-font-variation-GRAD), "opsz" var(--mio-theme-v2-title-m-font-variation-opsz);
+  display: inline-flex;
+  align-items: center;
+  color: var(--mio-theme-color-on-surface-variant);
+}
+@media screen and (max-width: 600px) {
+  .overline {
+    font-family: var(--mio-theme-v2-title-m-font-family);
+    font-size: var(--mio-theme-v2-title-m-font-size);
+    font-weight: var(--mio-theme-v2-title-m-font-weight);
+    letter-spacing: var(--mio-theme-v2-title-m-letter-spacing);
+    line-height: var(--mio-theme-v2-title-m-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-title-m-font-variation-GRAD), "opsz" var(--mio-theme-v2-title-m-font-variation-opsz);
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1294px) {
+  .overline {
+    font-family: var(--mio-theme-v2-title-m-font-family);
+    font-size: var(--mio-theme-v2-title-m-font-size);
+    font-weight: var(--mio-theme-v2-title-m-font-weight);
+    letter-spacing: var(--mio-theme-v2-title-m-letter-spacing);
+    line-height: var(--mio-theme-v2-title-m-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-title-m-font-variation-GRAD), "opsz" var(--mio-theme-v2-title-m-font-variation-opsz);
+  }
+}
+.title {
+  font-family: var(--mio-theme-v2-headline-s-font-family);
+  font-size: var(--mio-theme-v2-headline-s-font-size);
+  font-weight: var(--mio-theme-v2-headline-s-font-weight);
+  letter-spacing: var(--mio-theme-v2-headline-s-letter-spacing);
+  line-height: var(--mio-theme-v2-headline-s-line-height);
+  font-variation-settings: "GRAD" var(--mio-theme-v2-headline-s-font-variation-GRAD), "opsz" var(--mio-theme-v2-headline-s-font-variation-opsz);
+  transition: font-variation-settings 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+@media screen and (max-width: 600px) {
+  .title {
+    font-family: var(--mio-theme-v2-headline-s-font-family);
+    font-size: var(--mio-theme-v2-headline-s-font-size);
+    font-weight: var(--mio-theme-v2-headline-s-font-weight);
+    letter-spacing: var(--mio-theme-v2-headline-s-letter-spacing);
+    line-height: var(--mio-theme-v2-headline-s-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-headline-s-font-variation-GRAD), "opsz" var(--mio-theme-v2-headline-s-font-variation-opsz);
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1294px) {
+  .title {
+    font-family: var(--mio-theme-v2-headline-s-font-family);
+    font-size: var(--mio-theme-v2-headline-s-font-size);
+    font-weight: var(--mio-theme-v2-headline-s-font-weight);
+    letter-spacing: var(--mio-theme-v2-headline-s-letter-spacing);
+    line-height: var(--mio-theme-v2-headline-s-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-headline-s-font-variation-GRAD), "opsz" var(--mio-theme-v2-headline-s-font-variation-opsz);
+  }
+}
+.description {
+  font-family: var(--mio-theme-v2-body-l-font-family);
+  font-size: var(--mio-theme-v2-body-l-font-size);
+  font-weight: var(--mio-theme-v2-body-l-font-weight);
+  letter-spacing: var(--mio-theme-v2-body-l-letter-spacing);
+  line-height: var(--mio-theme-v2-body-l-line-height);
+  font-variation-settings: "GRAD" var(--mio-theme-v2-body-l-font-variation-GRAD), "opsz" var(--mio-theme-v2-body-l-font-variation-opsz);
+  max-width: 640px;
+}
+@media screen and (max-width: 600px) {
+  .description {
+    font-family: var(--mio-theme-v2-body-m-font-family);
+    font-size: var(--mio-theme-v2-body-m-font-size);
+    font-weight: var(--mio-theme-v2-body-m-font-weight);
+    letter-spacing: var(--mio-theme-v2-body-m-letter-spacing);
+    line-height: var(--mio-theme-v2-body-m-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-body-m-font-variation-GRAD), "opsz" var(--mio-theme-v2-body-m-font-variation-opsz);
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1294px) {
+  .description {
+    font-family: var(--mio-theme-v2-body-l-font-family);
+    font-size: var(--mio-theme-v2-body-l-font-size);
+    font-weight: var(--mio-theme-v2-body-l-font-weight);
+    letter-spacing: var(--mio-theme-v2-body-l-letter-spacing);
+    line-height: var(--mio-theme-v2-body-l-line-height);
+    font-variation-settings: "GRAD" var(--mio-theme-v2-body-l-font-variation-GRAD), "opsz" var(--mio-theme-v2-body-l-font-variation-opsz);
+  }
+}
+.title,
+.description {
+  color: var(--mio-theme-color-on-surface);
+}
+.thumb-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  height: 200px;
+  border-radius: 24px;
+  background-color: var(--mio-theme-color-secondary-container);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 1;
+}
+mio-icon-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  margin: 24px;
+  z-index: 1;
+}
+.foreground {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.hover-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  opacity: 0;
+  z-index: -1;
+}

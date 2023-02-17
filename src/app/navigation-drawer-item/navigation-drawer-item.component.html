@@ -1,0 +1,94 @@
+<div
+  #topicContainer
+  class="nav-drawer-topic-container"
+  [ngClass]="{ 'expandable': topicConfig.children.length > 0 }"
+  role="group">
+  <ng-container *ngIf="!hasArticles">
+    <a
+      mioAnalyticsTracking
+      [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_ITEM"
+      [analyticsLabel]="topicConfig.slug"
+      #buttonLink="routerLinkActive"
+      class="focusable-topic-item"
+      routerLinkActive
+      role="treeitem"
+      [class.active]="buttonLink.isActive"
+      [routerLink]="topicConfig.slug"
+      [routerLinkActiveOptions]="{ exact: exactMatch }"
+      [tabindex]="buttonLink.isActive ? 0 : -1"
+      [attr.aria-label]="topicConfig.title + ' link'"
+      (keydown)="onItemKeydownEvent($event)"
+      (click)="closeNavigationDrawerEvent()">
+      <mwc-button
+        #mwcButton
+        disabled
+        class="article-item"
+        expandContent=true
+        tabindex="-1"
+        [label]="topicConfig.title"
+        [ngClass]="{ 'active': buttonLink.isActive }">
+      </mwc-button>
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="hasArticles">
+    <div
+      mioAnalyticsTracking
+      [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_SECTION"
+      [analyticsLabel]="isCollapsed ? 'expand' : 'collapse'"
+      class="collapsible-topic-container focusable-topic-item"
+      [attr.aria-label]="topicConfig.title + (isCollapsed ? ' collapsed' : ' expanded')"
+      (click)="toggleState()"
+      (keydown)="onTopicKeydownEvent($event)"
+      tabindex="-1">
+      <mwc-button
+        #mwcButton
+        disabled
+        class="collapsible-topic-item"
+        trailingIcon
+        expandContent=true
+        [icon]="isCollapsed ? 'arrow_drop_down' : 'arrow_drop_up'"
+        [label]="topicConfig.title"
+        tabindex="-1">
+      </mwc-button>
+    </div>
+    <div
+      #articleContainer
+      class="nav-drawer-article-container"
+      [ngClass]="{ 'collapsed': isCollapsed }">
+      <div
+        #articleContent
+        class="article-content-collapsible"
+        role="group">
+        <ng-container *ngFor="let article of topicConfig.children">
+          <a
+            mioAnalyticsTracking
+            [analyticsKey]="AnalyticsKeys.MIO_LEFT_NAV_ITEM"
+            [analyticsLabel]="topicConfig.slug + '/' + article.slug"
+            #buttonLink="routerLinkActive"
+            class="focusable-topic-item collapsible-item"
+            role="treeitem"
+            routerLinkActive
+            [routerLink]="topicConfig.slug + '/' + article.slug"
+            [routerLinkActiveOptions]="{ exact: exactMatch }"
+            [ngClass]="{ 'hidden': isCollapsed }"
+            [class.active]="buttonLink.isActive"
+            [tabindex]="buttonLink.isActive ? 0 : -1"
+            [attr.aria-label]="article.title + ' link'"
+            (keydown)="onItemKeydownEvent($event)"
+            (click)="closeNavigationDrawerEvent()">
+            <mwc-button
+              #mwcButton
+              disabled
+              class="article-item"
+              expandContent=true
+              tabindex="-1"
+              [ngClass]="{ 'active': buttonLink.isActive }"
+              [label]="article.title">
+            </mwc-button>
+          </a>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,21 @@
+<a [href]="tile.link.href"
+  mioAnalyticsTracking
+  [analyticsKey]="AnalyticsKeys.MIO_M3_TILE"
+  [analyticsLabel]="tile.link.href"
+  [target]="tile.link.open_new_window ? '_blank' : '_self'"
+  [ariaLabel]="tile.link.aria_label">
+  <div class="copy">
+    <div class="eyebrow">
+      <span *ngFor="let fragment of eyebrowFragments; let fragmentIndex = index" class="eyebrow-fragment">
+        {{eyebrowFragments[fragmentIndex]}}
+        <span *ngIf="eyebrowFragments[fragmentIndex+1]" class="material-icons">keyboard_arrow_right</span>
+        <span *ngIf="eyebrowFragments[0] === 'Blog'" class="google-symbols" aria-hidden="true">arrow_outward</span>
+      </span>
+    </div>
+    <h3>{{tile.title}}</h3>
+    <p>{{tile.description}}</p>
+  </div>
+  <div class="image-wrapper">
+    <div class="image" [style.backgroundImage]="tile.image ? 'url(' +  tile.image.url + '=w960-rj)' : ''"></div>
+  </div>
+</a>
